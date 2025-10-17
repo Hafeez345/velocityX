@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VelocityX - Unleash the Speed</title>
+    <style>
+        /* CSS Starts Here */
+        :root {
+            --primary-color: #ff4500; /* Orange-Red for a sporty look */
+            --secondary-color: #0d1a26; /* Dark Blue/Black for background */
+            --text-light: #f4f4f4;
+            --text-dark: #333;
+            --font-family: 'Montserrat', sans-serif; /* Changed font for modern feel */
+        }
+
+        /* Basic Reset & Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--text-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff7847;
+        }
+
+        /* Header Styling */
+        .Header {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary-color);
+            position: sticky; /* Make header sticky */
+            top: 0;
+            z-index: 1000; /* Ensure it stays on top */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .Logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .Nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .Nav ul li {
+            margin-left: 30px;
+        }
+
+        .Nav ul li a {
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .Nav ul li a::after { /* Underline effect */
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .Nav ul li a:hover::after {
+            width: 100%;
+        }
+        .Nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Section Styling */
+        .Main {
+            padding: 0;
+        }
+
+        /* Hero Section (With Background Car & Text Overlay) */
+        .Hero-Section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/1920/1080?random=velocityx') no-repeat center center/cover;
+            /* Placeholder: Replace with a high-resolution, dynamic branded car image URL */
+            height: 90vh; /* More immersive */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 2rem;
+        }
+
+        .Hero-Content {
+            max-width: 900px;
+            animation: fadeInScale 1s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .Hero-Content h1 {
+            font-size: 4.5rem; /* Larger, bolder title */
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+            line-height: 1.1;
+        }
+
+        .Hero-Content p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Highlighted Car Features Section */
+        .Car-Showcase-Section {
+            padding: 5rem 2rem;
+            background-color: #f0f2f5; /* Light grey background */
+            text-align: center;
+        }
+
+        .Section-Title {
+            font-size: 3.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 3.5rem;
+            border-bottom: 4px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .Car-Grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .Car-Card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .Car-Card::before { /* Gradient overlay for image */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0));
+            z-index: 2;
+        }
+
+        .Car-Card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .Car-Card img {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover;
+            border-bottom: 1px solid var(--primary-color);
+            transition: transform 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .Car-Card:hover img {
+            transform: scale(1.05);
+        }
+
+        .Car-Info {
+            padding: 1.8rem;
+        }
+
+        .Car-Info h3 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .Car-Info h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .Car-Specs {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .Spec-Item {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .Spec-Item strong {
+            display: block;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .Car-Qualities ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .Car-Qualities ul li {
+            padding: 5px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+
+        .Car-Qualities ul li::before {
+            content: '✓'; /* Checkmark icon */
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .Famous-User {
+            background-color: #f7f7f7;
+            padding: 1rem 1.8rem;
+            border-top: 1px solid #eee;
+            font-style: italic;
+            color: #777;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .Famous-User strong {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* Car Listing Section (Card-based, instead of table) */
+        .Car-Listing-Section {
+            padding: 5rem 2rem;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .Car-Listing-Grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .Listing-Card {
+            background-color: #1a2a3a; /* Darker card background */
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .Listing-Card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .Listing-Card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .Listing-Card-Content {
+            padding: 1.5rem;
+        }
+
+        .Listing-Card-Content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .Listing-Card-Content p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .Listing-Price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .Discount-Badge {
+            display: inline-block;
+            background-color: #3cb371; /* Medium Sea Green */
+            color: var(--text-light);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            animation: pulse 1.5s infinite;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 10px rgba(60, 179, 113, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(60, 179, 113, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(60, 179, 113, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(60, 179, 113, 0); }
+        }
+
+        .Buy-Button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 15px rgba(255, 69, 0, 0.4);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .Buy-Button:hover {
+            background-color: #ff7847;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 69, 0, 0.6);
+        }
+
+        /* Footer Styling */
+        .Footer {
+            background-color: #1a1a1a;
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            font-size: 1rem;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .Footer p {
+            margin-bottom: 12px;
+        }
+
+        .Contact-Link {
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .Hero-Content h1 {
+                font-size: 3.5rem;
+            }
+            .Section-Title {
+                font-size: 2.5rem;
+            }
+            .Car-Grid, .Car-Listing-Grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .Car-Card img {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .Header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .Nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .Nav ul li {
+                margin: 0 10px 10px 10px;
+            }
+            .Hero-Content h1 {
+                font-size: 2.8rem;
+            }
+            .Hero-Content p {
+                font-size: 1rem;
+            }
+            .Section-Title {
+                font-size: 2rem;
+            }
+            .Car-Showcase-Section, .Car-Listing-Section {
+                padding: 3rem 1rem;
+            }
+            .Car-Info {
+                padding: 1.2rem;
+            }
+            .Car-Info h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .Logo {
+                font-size: 1.8rem;
+            }
+            .Nav ul li {
+                margin: 0 5px 8px 5px;
+            }
+            .Hero-Content h1 {
+                font-size: 2.2rem;
+            }
+            .Hero-Content p {
+                font-size: 0.9rem;
+            }
+            .Section-Title {
+                font-size: 1.8rem;
+            }
+            .Car-Card {
+                margin: 0 5px; /* Adjust spacing for very small screens */
+            }
+            .Car-Info {
+                padding: 1rem;
+            }
+            .Car-Specs {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .Spec-Item strong {
+                font-size: 1.1rem;
+            }
+            .Listing-Card-Content h3 {
+                font-size: 1.5rem;
+            }
+            .Listing-Price {
+                font-size: 1.3rem;
+            }
+            .Buy-Button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+        /* CSS Ends Here */
+    </style>
+</head>
+<body>
+
+    <header class="Header">
+        <div class="Logo">VelocityX</div>
+        <nav class="Nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#showcase">Showcase</a></li>
+                <li><a href="#listings">Listings</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="Main">
+
+        <section id="home" class="Hero-Section">
+            <div class="Hero-Content">
+                <h1>Experience the Pinnacle of Automotive Excellence</h1>
+                <p>
+                    VelocityX is your premier destination for the world's most desired sports and super cars. We curate a selection of machines that redefine speed, luxury, and engineering. From the roar of a V12 engine to the sleek, aerodynamic lines of a hypercar, every vehicle here is a masterpiece. We don't just sell cars; we deliver an exclusive lifestyle defined by performance and prestige. Explore iconic brands like Ferrari, Lamborghini, Porsche, and McLaren, and begin the journey toward owning your dream drive. Our commitment is to offer unmatched service and the thrill of unparalleled velocity.
+                </p>
+                <a href="#listings" class="Buy-Button" style="background-color: var(--text-light); color: var(--secondary-color);">Explore Our Collection</a>
+            </div>
+        </section>
+
+        <section id="showcase" class="Car-Showcase-Section">
+            <h2 class="Section-Title">Our Featured Machines</h2>
+            <div class="Car-Grid">
+
+                <div class="Car-Card">
+                    <img src="farari.jpg" alt="Ferrari 488 GTB">
+                    <div class="Car-Info">
+                        <h3>Ferrari 488 GTB</h3>
+                        <p>The Ferrari 488 GTB embodies sheer power and Italian elegance, delivering a thrilling ride with its twin-turbo V8 engine.</p>
+                        <div class="Car-Specs">
+                            <div class="Spec-Item"><strong>661</strong> HP<br>Performance</div>
+                            <div class="Spec-Item"><strong>3.0s</strong> 0-100km/h<br>Acceleration</div>
+                            <div class="Spec-Item"><strong>330+</strong> km/h<br>Top Speed</div>
+                        </div>
+                        <div class="Car-Qualities">
+                            <ul>
+                                <li>Exhilarating twin-turbo V8 engine</li>
+                                <li>Aerodynamic design for superior downforce</li>
+                                <li>Luxurious, driver-focused cockpit</li>
+                                <li>Legendary Ferrari handling and prestige</li>
+                            </ul>
+                        </div>
+                        <div class="Famous-User">
+                            Favored by icons like <strong>Lewis Hamilton</strong> (for its performance lineage).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Car-Card">
+                    <img src="lambarghini.jpg" alt="Lamborghini Huracan EVO">
+                    <div class="Car-Info">
+                        <h3>Lamborghini Huracan EVO</h3>
+                        <p>A true beast from Sant'Agata Bolognese, the Huracan EVO combines raw power with cutting-edge dynamic control systems.</p>
+                        <div class="Car-Specs">
+                            <div class="Spec-Item"><strong>631</strong> HP<br>Performance</div>
+                            <div class="Spec-Item"><strong>2.9s</strong> 0-100km/h<br>Acceleration</div>
+                            <div class="Spec-Item"><strong>325+</strong> km/h<br>Top Speed</div>
+                        </div>
+                        <div class="Car-Qualities">
+                            <ul>
+                                <li>Naturally aspirated V10 engine symphony</li>
+                                <li>Lamborghini Dinamica Veicolo Integrata (LDVI)</li>
+                                <li>Aggressive, unmistakable design language</li>
+                                <li>Unmatched road presence and driving thrill</li>
+                            </ul>
+                        </div>
+                        <div class="Famous-User">
+                            Often spotted with stars like <strong>Cristiano Ronaldo</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Car-Card">
+                    <img src="porsche 911.jpg" alt="Porsche 911 Turbo S">
+                    <div class="Car-Info">
+                        <h3>Porsche 911 Turbo S</h3>
+                        <p>The ultimate daily supercar, offering blistering performance combined with Porsche's renowned reliability and usability.</p>
+                        <div class="Car-Specs">
+                            <div class="Spec-Item"><strong>640</strong> HP<br>Performance</div>
+                            <div class="Spec-Item"><strong>2.7s</strong> 0-100km/h<br>Acceleration</div>
+                            <div class="Spec-Item"><strong>330</strong> km/h<br>Top Speed</div>
+                        </div>
+                        <div class="Car-Qualities">
+                            <ul>
+                                <li>Iconic flat-six twin-turbo engine</li>
+                                <li>Precise handling and all-wheel-drive grip</li>
+                                <li>High-quality, refined interior</li>
+                                <li>Suitable for track days and daily driving</li>
+                            </ul>
+                        </div>
+                        <div class="Famous-User">
+                            A favorite of business moguls and tech giants like <strong>Bill Gates</strong>.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="listings" class="Car-Listing-Section">
+            <h2 class="Section-Title" style="color: var(--text-light);">Exclusive Offers</h2>
+            <div class="Car-Listing-Grid">
+
+                <div class="Listing-Card">
+                    <img src="farari f8.jpg" alt="Ferrari F8 Tributo">
+                    <div class="Listing-Card-Content">
+                        <h3>Ferrari F8 Tributo</h3>
+                        <p>A tribute to the most powerful V8 in Ferrari history, blending extreme performance with advanced aerodynamics.</p>
+                        <div class="Listing-Price">$320,000</div>
+                        <span class="Discount-Badge">20% Discount!</span>
+                        <a href="https://wa.me/923033744977?text=Hello%20VelocityX,%20I%20am%20interested%20in%20the%20Ferrari%20F8%20Tributo." target="_blank" class="Buy-Button">Buy Now</a>
+                    </div>
+                </div>
+
+                <div class="Listing-Card">
+                    <img src="lamborghini urus.jpg" alt="Lamborghini Urus">
+                    <div class="Listing-Card-Content">
+                        <h3>Lamborghini Urus</h3>
+                        <p>The world's first Super Sport Utility Vehicle, blending luxury, sportiness, and versatility in true Lamborghini style.</p>
+                        <div class="Listing-Price">$230,000</div>
+                        <span class="Discount-Badge">20% Discount!</span>
+                        <a href="https://wa.me/923033744977?text=Hello%20VelocityX,%20I%20am%20interested%20in%20the%20Lamborghini%20Urus." target="_blank" class="Buy-Button">Buy Now</a>
+                    </div>
+                </div>
+
+                <div class="Listing-Card">
+                    <img src="mc laren 720s.jpg" alt="McLaren 720S">
+                    <div class="Listing-Card-Content">
+                        <h3>McLaren 720S</h3>
+                        <p>A stunning blend of exotic design and brutal performance, the 720S offers unparalleled driving dynamics.</p>
+                        <div class="Listing-Price">$315,000</div>
+                        <span class="Discount-Badge">20% Discount!</span>
+                        <a href="https://wa.me/923033744977?text=Hello%20VelocityX,%20I%20am%20interested%20in%20the%20McLaren%20720S." target="_blank" class="Buy-Button">Buy Now</a>
+                    </div>
+                </div>
+                
+                <div class="Listing-Card">
+                    <img src="audi.jpg" alt="Audi R8 V10">
+                    <div class="Listing-Card-Content">
+                        <h3>Audi R8 V10</h3>
+                        <p>The everyday supercar with a stunning V10 engine, offering thrilling performance and comfortable daily usability.</p>
+                        <div class="Listing-Price">$190,000</div>
+                        <span class="Discount-Badge">20% Discount!</span>
+                        <a href="https://wa.me/923033744977?text=Hello%20VelocityX,%20I%20am%20interested%20in%20the%20Audi%20R8%20V10." target="_blank" class="Buy-Button">Buy Now</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="Footer">
+        <p>&copy; 2025 VelocityX. All rights reserved. | Built for Speed Enthusiasts.</p>
+        <p>
+            Contact Us on WhatsApp: 
+            <a href="https://wa.me/923033744977?text=Hello%20VelocityX,%20I%20have%20an%20inquiry." target="_blank" class="Contact-Link">
+                03033744977 (Click to Chat)
+            </a>
+        </p>
+    </footer>
+
+</body>
+</html>
